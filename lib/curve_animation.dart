@@ -14,31 +14,39 @@ class _CurvedAnimationPageState extends State<CurvedAnimationPage>
   void initState() {
     super.initState();
     controller = AnimationController(
-        duration: Duration(milliseconds: 1000), vsync: this);
+        duration: Duration(milliseconds: 2000), vsync: this);
 
     final CurvedAnimation curve =
         CurvedAnimation(parent: controller, curve: Curves.easeIn);
-    animation = Tween(begin: 0.0, end: 600.0).animate(curve);
+    animation = Tween(begin: 100.0, end: 300.0).animate(curve);
+
+    animation.addStatusListener(listener);
 
     controller.forward();
+  }
+
+  void listener(AnimationStatus status) {
+    if (status == AnimationStatus.completed) {
+      controller.reverse();
+    } else if (status == AnimationStatus.dismissed) {
+      controller.forward();
+    }
   }
 
   Widget builder(BuildContext context, Widget child) {
     return Container(
       height: animation.value,
       width: animation.value,
-      child: FlutterLogo(size: 400,),
+      child: FlutterLogo(),
     );
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Padding(
-        padding: EdgeInsets.only(top: 200, left: 100, right: 100),
-        child: Center(
-          child: AnimatedBuilder(animation: animation, builder: builder),
-        ),
+      appBar: AppBar(),
+      body: Center(
+        child: AnimatedBuilder(animation: animation, builder: builder),
       ),
     );
   }
