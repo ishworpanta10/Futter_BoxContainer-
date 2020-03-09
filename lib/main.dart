@@ -1,5 +1,7 @@
+import 'package:demo/profile1.dart';
 import 'package:flutter/material.dart';
 
+import 'animation.dart';
 import 'nextpage.dart';
 
 void main() => runApp(MyApp());
@@ -14,6 +16,8 @@ class MyApp extends StatelessWidget {
       routes: {
         '/': (context) => HomePage(),
         '/next': (context) => NextPage(),
+        '/animation': (context) => AnimationPage(),
+        '/profile1': (_) => ProfilePage(),
       },
     );
   }
@@ -36,12 +40,16 @@ class _HomePageState extends State<HomePage> {
               decoration: BoxDecoration(color: Colors.grey),
             ),
             ListTile(
-              title: Text("Item 1"),
-              onTap: () {},
+              title: Text("Profiles UIS"),
+              onTap: () {
+                Navigator.pushNamed(context, '/profile1');
+              },
             ),
             ListTile(
-              title: Text("Item 1"),
-              onTap: () {},
+              title: Text("Animation Twins"),
+              onTap: () {
+                Navigator.pushNamed(context, '/animation');
+              },
             ),
             ListTile(
               title: Text("Exit"),
@@ -145,8 +153,7 @@ class _HomePageState extends State<HomePage> {
                         backgroundBlendMode: BlendMode.exclusion,
                         gradient: LinearGradient(
                             colors: const [Colors.green, Colors.red])),
-                    child: Image.network(
-                        "https://lh3.googleusercontent.com/proxy/P7RlZQD6ZVkAonZN1q56jxKgSPzJtRnjwc_CsloWW88ojPtx8uBaEr8j-AYt806rrqKAtWRe3DLK0qCakilxFCwna1-GGd021cUiflYjmoyBqnlIyeQxrg")),
+                    child: FlutterLogo()),
               ],
             ),
           ],
