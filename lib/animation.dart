@@ -1,3 +1,4 @@
+import 'package:demo/curve_animation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/animation.dart';
 
@@ -39,10 +40,27 @@ class _AnimationPageState extends State<AnimationPage>
         centerTitle: true,
         elevation: 0,
       ),
-      body: Container(
-        height: animation.value,
-        width: animation.value,
-        child: FlutterLogo(size: 200,)
+      body: Column(
+        children: <Widget>[
+          Container(
+              height: animation.value,
+              width: animation.value,
+              child: FlutterLogo(
+                size: 200,
+              )),
+          MaterialButton(
+              height: 40,
+              minWidth: 20,
+              child: Text("Curverd Animation"),
+              color: Colors.blue.shade300,
+              onPressed: () {
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => CurvedAnimationPage(),
+                    ));
+              }),
+        ],
       ),
     );
   }
