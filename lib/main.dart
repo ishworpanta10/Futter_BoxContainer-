@@ -1,3 +1,4 @@
+import 'package:demo/pdf_reader.dart';
 import 'package:demo/profile1.dart';
 import 'package:flutter/material.dart';
 
@@ -18,6 +19,7 @@ class MyApp extends StatelessWidget {
         '/next': (context) => NextPage(),
         '/animation': (context) => AnimationPage(),
         '/profile1': (_) => ProfilePage(),
+        '/pdf': (_) => PdfReaderDemo(),
       },
     );
   }
@@ -49,6 +51,13 @@ class _HomePageState extends State<HomePage> {
               title: Text("Animation Twins"),
               onTap: () {
                 Navigator.pushNamed(context, '/animation');
+              },
+            ),
+            Divider(),
+            ListTile(
+              title: Text("Pdf Reader"),
+              onTap: () {
+                Navigator.pushNamed(context, '/pdf');
               },
             ),
             ListTile(

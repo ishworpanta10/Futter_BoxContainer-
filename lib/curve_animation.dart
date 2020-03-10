@@ -14,7 +14,7 @@ class _CurvedAnimationPageState extends State<CurvedAnimationPage>
   void initState() {
     super.initState();
     controller = AnimationController(
-        duration: Duration(milliseconds: 2000), vsync: this);
+        duration: Duration(milliseconds: 3000), vsync: this);
 
     final CurvedAnimation curve =
         CurvedAnimation(parent: controller, curve: Curves.easeIn);
